@@ -1,7 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define NULL 0
-
+int length = 0;
+/**
+ * @author Mainul Islam Mahim
+*/
 struct node
 {
     int num;
@@ -14,8 +17,10 @@ void LinkedList()
     int i,j,n;
     start = new node;
     ptr = start;
+    
     cout<<"How many elements: ";
     cin>>n;
+    
     for(i=1; i<=n; i++)
     {
         cout << "Input element " << i << ": ";
@@ -28,6 +33,7 @@ void LinkedList()
         }
     }
     ptr->link = NULL;
+    length = n;
 }
 
 void Insert(int value,int pos)
@@ -40,7 +46,22 @@ void Insert(int value,int pos)
         t->link = start;
         start = t;
     }
-
+    else if(pos>0 && pos<=(length+1))
+    {
+        node* t = start;
+        node* prev;
+        for(int i=1; i<pos; i++)
+        {
+            prev = t;
+            t = t->link;
+        }
+        node* New = new node;
+        prev->link = New;
+        New->num = value;
+        New->link = t;
+    }
+    else cout<<"Invalid position"<<endl;
+    length++; //increment the size of LL
 }
 void Delete(int pos)
 {
@@ -60,6 +81,7 @@ void Delete(int pos)
     }
     prev->link = t->link;
     delete t;
+    length--; //decrement the size of LL
 }
 void Display()
 {
@@ -80,6 +102,7 @@ int main()
 
     while(1)
     {
+        cout<<endl;
         cout<<"1.Insert an element in specific position "<<endl;
         cout<<"2.Delete an element in specific position "<<endl;
         cout<<"3.Exit"<<endl;
@@ -87,14 +110,17 @@ int main()
         cin>>n;
         if(n==1)
         {
-            cout<<"Value : "; cin>>item;
-            cout<<"Position : "; cin>>pos;
+            cout<<"Value : ";
+            cin>>item;
+            cout<<"Position : ";
+            cin>>pos;
             Insert(item,pos);
             Display();
         }
         else if(n==2)
         {
-            cout<<"Position : "; cin>>pos;
+            cout<<"Position : ";
+            cin>>pos;
             Delete(pos);
             Display();
         }
