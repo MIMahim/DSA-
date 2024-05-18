@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+/**
+ * @author Mainul Islam Mahim
+*/
 int main()
 {
     int n,i,j,x,k;
