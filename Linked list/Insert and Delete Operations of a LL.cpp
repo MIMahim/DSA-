@@ -2,7 +2,9 @@
 using namespace std;
 #define NULL 0
 int length = 0;
-
+/**
+ * @author Mainul Islam Mahim
+*/
 struct node
 {
     int num;
@@ -15,10 +17,10 @@ void LinkedList()
     int i,j,n;
     start = new node;
     ptr = start;
-
+    
     cout<<"How many elements: ";
     cin>>n;
-
+    
     for(i=1; i<=n; i++)
     {
         cout << "Input element " << i << ": ";
@@ -125,4 +127,3 @@ int main()
         else if(n==3) return 0;
     }
 }
-
